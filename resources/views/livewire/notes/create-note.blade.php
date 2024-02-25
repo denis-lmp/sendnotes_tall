@@ -22,11 +22,11 @@ new class extends Component {
             ->user()
             ->notes()
             ->create([
-                'title' => $this->noteTitle,
-                'body' => $this->noteBody,
-                'recipient' => $this->noteRecipient,
-                'send_date' => $this->noteSendDate,
-                'is_published' =>false,
+                'title'        => $this->noteTitle,
+                'body'         => $this->noteBody,
+                'recipient'    => $this->noteRecipient,
+                'send_date'    => $this->noteSendDate,
+                'is_published' => true,
             ]);
 
         redirect(route('notes.index'));
@@ -41,7 +41,7 @@ new class extends Component {
                  type="email"/>
         <x-input icon="calendar" wire:model="noteSendDate" type="date" label="Send Date"/>
         <div class="pt-4">
-            <x-button primary right-icon="calendar" wire:click="submit">Schedule Note</x-button>
+            <x-button primary right-icon="calendar" type="submit">Schedule Note</x-button>
         </div>
         <x-errors/>
     </form>

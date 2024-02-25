@@ -20,11 +20,16 @@ class Note extends Model
         'title',
         'body',
         'send_date',
-        'recipient'
+        'recipient',
+        'is_published',
     ];
 
     protected $guarded = [
         'id',
+    ];
+
+    protected $casts = [
+        'is_published' => 'boolean',
     ];
 
     public function user(): BelongsTo
