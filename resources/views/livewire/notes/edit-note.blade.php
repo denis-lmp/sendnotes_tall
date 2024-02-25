@@ -42,7 +42,7 @@ new #[Layout('layouts.app')] class extends Component {
             'is_published' => $this->noteIsPublished,
         ]);
 
-        return redirect()->route('notes.index');
+        $this->dispatch('note-saved');
     }
 
 }; ?>
@@ -63,9 +63,11 @@ new #[Layout('layouts.app')] class extends Component {
                      type="email"/>
             <x-input icon="calendar" wire:model="noteSendDate" type="date" label="Send Date"/>
             <x-checkbox wire:model="noteIsPublished" label="Note Published"/>
-            <div class="pt-4">
-                <x-button primary right-icon="calendar" type="submit">Save Note</x-button>
+            <div class="pt-4 flex justify-between">
+                <x-button secondary type="submit" spinner="saveNote">Save Note</x-button>
+                <x-button href="{{ route('notes.index') }}" flat negative>Back to Notes</x-button>
             </div>
+            <x-action-message on="note-saved"/>
             <x-errors/>
         </form>
     </div>
